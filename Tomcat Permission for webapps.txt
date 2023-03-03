@@ -1,0 +1,29 @@
+[appadmin@chn-mit-jenkins03 apache-tomcat-9.0.67]$ ll
+total 136
+drwxr-x---. 2 appadmin Appdevelop  4096 Oct  6 14:33 bin
+-rw-r-----. 1 appadmin Appdevelop 19992 Sep 23 16:52 BUILDING.txt
+drwx------. 3 appadmin Appdevelop  4096 Oct  6 14:54 conf
+-rw-r-----. 1 appadmin Appdevelop  6210 Sep 23 16:52 CONTRIBUTING.md
+drwxr-x---. 2 appadmin Appdevelop  4096 Oct  6 14:33 lib
+-rw-r-----. 1 appadmin Appdevelop 57092 Sep 23 16:52 LICENSE
+drwxr-x---. 2 appadmin Appdevelop  4096 Oct  6 14:36 logs
+-rw-r-----. 1 appadmin Appdevelop  2333 Sep 23 16:52 NOTICE
+-rw-r-----. 1 appadmin Appdevelop  3398 Sep 23 16:52 README.md
+-rw-r-----. 1 appadmin Appdevelop  6901 Sep 23 16:52 RELEASE-NOTES
+-rw-r-----. 1 appadmin Appdevelop 16505 Sep 23 16:52 RUNNING.txt
+drwxr-x---. 2 appadmin Appdevelop    30 Oct  6 14:33 temp
+drwxr-x---. 8 appadmin Appdevelop    94 Oct  6 16:02 webapps
+drwxr-x---. 3 appadmin Appdevelop    22 Oct  6 14:36 work
+[appadmin@chn-mit-jenkins03 apache-tomcat-9.0.67]$ cd webapps/
+[appadmin@chn-mit-jenkins03 webapps]$ ll
+total 8
+drwxr-x---. 15 appadmin Appdevelop 4096 Oct  6 14:33 docs
+drwxr-x---.  7 appadmin Appdevelop   99 Oct  6 14:33 examples
+drwxr-x---.  6 appadmin Appdevelop   79 Oct  6 14:33 host-manager
+drwxr-x---.  6 appadmin Appdevelop  114 Oct  6 14:33 manager
+drwxr-xr-x.  2 appadmin Appdevelop   53 Oct  6 16:02 myapp
+drwxr-x---.  3 appadmin Appdevelop 4096 Oct  6 14:33 ROOT
+[appadmin@chn-mit-jenkins03 webapps]$ cd myapp/
+[appadmin@chn-mit-jenkins03 myapp]$ ll
+total 4
+-rw-r--r--. 1 appadmin Appdevelop 3017 Oct  6 17:27 com.sample.maven.first-1.0-SNAPSHOT.jar

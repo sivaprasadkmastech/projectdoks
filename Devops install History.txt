@@ -1,0 +1,1625 @@
+Jenkins 01 - Root User
+    1  yum install xorg* x11* xauth*
+    2  yum install realmd oddjob-mkhomedir oddjob samba-winbind-clients samba-winbind samba-common-tools samba-winbind-krb5-locator sssd adcli
+    3  realm join -U dtamil corp.mastechinfotrellis.com
+    4  realm list
+    5  vi /etc/sssd/sssd.conf
+    6  vi /etc/sudoers.d/sudoers
+    7  systemctl restart sssd
+    8  groupadd -g 9002 Appdevelop
+    9  useradd -u 9001 -g Appdevelop -m -d /home/appadmin appadmin
+   10  cd /opt/
+   11  mkdir Softwares App
+   12  ll
+   13  chmod 775 -R *
+   14  ll
+   15  chown -R appadmin:Appdevelop *
+   16  ll
+   17  passwd infaadmin
+   18  passwd appadmin
+   19  exit
+   20  cal
+   21  ip add
+   22  ip ad
+   23  `
+   24  hostname
+   25  hostnamectl hostname chn-mit-jenkins01
+   26  hostname
+   27  init 6
+   28  free -h
+   29  df -h
+   30  wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+   31  ls /etc/yum.repos.d/
+   32  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+   33  exit
+   34  sudo dnf install java-11-openjdk
+   35  firewall-cmd --state
+   36  firewall-cmd --add-port=8080/tcp --permanent
+   37  firewall-cmd --reload
+   38  firewall-cmd --list-all
+   39  ping chn-mit-jenkins02
+   40  cat /var/lib/jenkins/secrets/initialAdminPassword
+   41  cd /var/lib/jenkins/
+   42  ls
+   43  cat config.xml
+   44  exit
+   45  systemctl restart sssd
+   46  cd /var/log/
+   47  ls
+   48  cd audit/
+   49  ls
+   50  cd ..
+   51  ls
+   52  cd jenkins/
+   53  ls
+   54  ls -la
+   55  cd ..
+   56  cd lib/jenkins/
+   57  ls
+   58  ls /var/log/
+   59  cat /var/log/secure
+   60  tail -f /var/log/secure
+   61  pwd
+   62  ls
+   63  dnf update
+   64  java --version
+   65  sudo dnf install jenkins
+   66  systemctl enable --now jenkins.service
+   67  systemctl status jenkins.service
+   68  chkconfig
+   69  dnf install yum-utils
+   70  chkconfig
+   71  whereis jenkins
+   72  where jenkins
+   73  ls
+   74  cd /etc/sysconfig/
+   75  ls
+   76  vi jenkins
+   77  firewall-cmd --add-port=1515/tcp --permanent
+   78  firewall-cmd --reload
+   79  cat /etc/os-release
+   80  ls
+   81  cd /opt/
+   82  ls
+   83  cd Softwares/
+   84  ls
+   85  cat /etc/default/jenkins
+   86  cd /etc/sysconfig/
+   87  cat jenkins
+   88  vi jenkins
+   89  ls -la | grep jenkins
+   90  rm -rf .jenkins.swp
+   91  vi jenkins
+   92  systemctl restart jenkins.service
+   93  systemctl status jenkins.service
+   94  firewall-cmd --add-port=52525/tcp --permanent
+   95  firewall-cmd --reload
+   96  cat jenkins
+   97  systemctl daemon-reload
+   98  systemctl stop jenkins.service
+   99  systemctl start jenkins.service
+  100  systemctl edit jenkins.service
+  101  netstat -plunt | grep 52525
+  102  vi jenkins
+  103  firewall-cmd --add-port=9335/tcp --permanent
+  104  firewall-cmd --reload
+  105  netstat -plunt | grep 9335
+  106  systemctl restart jenkins.service
+  107  systemctl edit jenkins.service
+  108  systemctl restart jenkins.service
+  109  systemctl daemon-reload
+  110  systemctl restart jenkins.service
+  111  reboot
+  112  ls
+  113   vi /etc/sysconfig/jenkins
+  114  cd /opt/
+  115  ls
+  116  cd jenkins_cert/
+  117  ls
+  118  cat certificate.crt
+  119  cat ca_bundle.crt
+  120  systemctl cat jenkins
+  121  firewall-cmd --list-all
+  122  firewall-cmd --add-service=http --permanent
+  123  firewall-cmd --add-service=https --permanent
+  124  firewall-cmd --reload
+  125  cat /var/log/nginx/jenkins.error.log
+  126  setsebool -P httpd_can_network_relay 1
+  127  sudo cat /var/log/audit/audit.log | grep nginx | grep denied
+  128  setsebool httpd_can_network_connect on
+  129  setsebool httpd_can_network_connect on -P
+  130  cd /opt/jenkins_cert/
+  131  pwd
+  132  ls
+  133  sudo cat /var/log/audit/audit.log | grep nginx | grep denied
+  134  systemctl edit jenkins.service
+  135  systemctl restart jenkins.service
+  136  cd /opt/
+  137  cd /opt
+  138  mv /tmp/jenkins.corp.mastechinfotrellis.com.zip .
+  139  ls
+  140  unzip jenkins.corp.mastechinfotrellis.com.zip
+  141  ls
+  142  mkdir jenkins_cert
+  143  mv *crt *.key jenkins_cert/
+  144  ls
+  145  ls jenkins_cert/
+  146  rm -rf jenkins.corp.mastechinfotrellis.com.zip
+  147  ls
+  148  cd jenkins_cert/
+  149  ls
+  150  pwd
+  151  ls
+  152  dnf install nginx
+  153  cd /etc/nginx/
+  154  ls
+  155  cp nginx.conf nginx.conf.orig
+  156  vi nginx.conf
+  157  nginx -t
+  158  vi nginx.conf
+  159  vi nginx.conf.orig
+  160  cat nginx.conf
+  161  cat nginx.conf.orig > nginx.conf
+  162  vi nginx.conf
+  163  nginx -t
+  164  vi nginx.conf
+  165  systemctl enable --now nginx.service
+  166  systemctl status nginx.service
+  167  vi nginx.conf
+  168  nginx -t
+  169  systemctl restart nginx
+  170  vi nginx.conf
+  171  systemctl restart nginx
+  172  vi nginx.conf
+  173  nginx -t
+  174  systemctl restart nginx
+  175  setsebool httpd_can_network_connect off -P
+  176  ls
+  177  cp /etc/nginx/nginx.conf /opt/Softwares/
+  178  setsebool httpd_can_network_connect on -P
+  179  cd /etc/nginx/
+  180  vi nginx.conf
+  181  vi nginx.conf.orig
+  182  systemctl restart jenkins.service
+  183  dnf remove jenkins
+  184  exit
+  185  ls
+  186  visudo
+  187  w
+  188  history
+  189  setsebool httpd_can_network_connect off -P
+  190  cd /etc/systemd/system/
+  191  ls
+  192  rm -rf jenkins.service.d/
+  193  systemctl edit jenkins.service
+  194  cd /var/lib/
+  195  ls
+  196  ls | grep jenkins
+  197  rm -rf jenkins/
+  198  ls
+  199  cd ..
+  200  cd
+  201  exit
+  202  firewall-cmd --list-all
+  203  firewall-cmd --remove-port={8080/tcp,1515/tcp,52525/tcp,9335/tcp}
+  204  firewall-cmd --reload
+  205  firewall-cmd --list-all
+  206  firewall-cmd --remove-port={8080/tcp,1515/tcp,52525/tcp,9335/tcp} --permanent
+  207  firewall-cmd --list-all
+  208  firewall-cmd --reload
+  209  firewall-cmd --list-all
+  210  ip a
+  211  exit
+  212  dnf update
+  213  vi /etc/dnf/dnf.conf
+  214  dnf update
+  215  yum update
+  216  firewall-cmd  --list-all
+  217  firewall-cmd --add-port=1515/tcp --permanent
+  218  firewall-cmd --remove-port=8080/tcp --permanent
+  219  firewall-cmd --reload
+  220  firewall-cmd  --list-all
+  221  cd /var/lib/jenkins/
+  222  l
+  223  ls
+  224  ll
+  225  mkdir .ssh
+  226  ssh-keyscan -H chn-mit-jenkins02 >>.ssh/known_hosts
+  227  cat .ssh/known_hosts
+  228  ls -la | grep .ssh
+  229  chown -R jenkins:jenkins .ssh/
+  230  ls -la | grep .ssh
+  231  cd
+  232  reboot
+  233  firewall-cmd --remove-port=9335/tcp --permanent
+  234  firewall-cmd --reload
+  235  dnf install git
+  236  systemctl restart jenkins.service
+  237  exit
+  238  tail -n 10 /etc/passwd
+  239  cd /var/lib/jenkins
+  240  ls -la
+  241  cd .ssh/
+  242  ls
+  243  cat known_hosts
+  244  ls /home/
+  245  tail -n 20 /etc/passwd
+  246  ls -la
+  247  cat known_hosts
+  248  ssh-keyscan -H chn-mit-jenkins02
+  249  cd /etc/
+  250  cd dnf
+  251  ls
+  252  cat dnf.conf
+  253  vi dnf.conf
+  254  exit
+  255  history
+  256  su - appadmin
+  257  su - postgres
+  258  su - appadmin
+  259  y
+  260  ip a
+  261  systemctl start sonar.service
+  262  firewall-cmd --list-all
+  263  tmux attach-session
+  264  history
+  265  tmux list-sessions
+  266  su - appadmin
+  267  ll
+  268  cd
+  269  cd /
+  270  ll
+  271  cat /etc/nginx/nginx.conf
+  272  history
+
+
+Jenkins 01 - Appadmin User
+    1  cd opt/Software
+    2  cd /opt
+    3  cd /opt/Software
+    4  mkdir Software
+    5  ls
+    6  cd /opt/Softwares
+    7  cd ..
+    8  ls
+    9  ll
+   10  exit
+   11  cd .ssh
+   12  mkdir .ssh
+   13  cd .ssh
+   14  vi authorized_keys
+   15  exit
+   16  sudo dnf update
+   17  exit
+   18  dnf update
+   19  java --version
+   20  su - root
+   21  exec su -
+   22  su - root
+   23  sudo su -
+   24  exit
+   25  sudo dnf update -y
+   26  ls
+   27  pwd
+   28  cd ..
+   29  ls
+   30  cd opt
+   31  ls
+   32  cd softwares
+   33  cd Softwares
+   34  cd ..
+   35  cd App
+   36  sudo wget -O /etc/yum.repos.d/jenkins.repo \
+   37  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+   38  sudo dnf upgrade
+   39  sudo systemctl enable jenkins
+   40  sudo systemctl start jenkins
+   41  cd ..
+   42  cd Softwares
+   43  sudo systemctl start jenkins
+   44  cd ..
+   45  sudo systemctl enable jenkins
+   46  java --version
+   47  cd App
+   48  sudo dnf install jenkins
+   49  sudo systemctl daemon-reload
+   50  cd ..
+   51  cd Software
+   52  cd Softwares
+   53  sudo systemctl enable jenkins
+   54  sudo systemctl start jenkins
+   55  sudo systemctl status jenkins
+   56  \
+   57  sudo systemctl enable jenkins
+   58  sudo systemctl status jenkins
+   59  sudo systemctl enable jenkins
+   60  sudo systemctl start jenkins
+   61  ls\
+   62  ls
+   63  ll
+   64  cd ..
+   65  ls
+   66  cd App
+   67  ls
+   68  ll
+   69  cd ..
+   70  ls
+   71  cd jenkins_cert
+   72  ls
+   73  cd..
+   74  cd ..
+   75  vi /etc/sysconfig/jenkins
+   76  vi /opt/sysconfig/jenkins
+   77  cd etc
+   78  cd sysconfig
+   79  cd jenkins
+   80  ls
+   81  vi jenkins
+   82  netstat -plunt | grep :8080
+   83  cd ..
+   84  cd..
+   85  cd ..
+   86  netstat -plunt | grep :8080
+   87   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   88  cd opt/App
+   89  sudo dnf install jenkins
+   90  cd ..
+   91  cd Softwares
+   92  ls
+   93  cat ngix.conf
+   94  ll
+   95  cd ..
+   96  ls
+   97  sysconfig
+   98  cd sysconfig
+   99  cd ..
+  100  etc
+  101  cd etc
+  102  ls
+  103  cd sysconfig
+  104  ls
+  105  ll
+  106  cd..
+  107  cd ..
+  108  cd opt
+  109  cd Softwares
+  110  sudo apt-get remove jenkins
+  111  cd ..
+  112  cd..
+  113  cd ..
+  114  cd etc/sysconfig
+  115  sudo netstat -plunt | grep :8080
+  116  sudo netstat -plunt | grep :9335
+  117  EnRdMMZ$2
+  118  sudo netstat -plunt | grep :9335
+  119  cat jenkins
+  120  vi  jenkins
+  121  sudo vi  jenkins
+  122  sudo netstat -plunt | grep :8080
+  123  sudo vi  jenkins
+  124  sudo netstat -plunt | grep :8080
+  125  sudo vi  jenkins
+  126  sudo netstat -plunt | grep :8080
+  127  sudo vi  jenkins
+  128  sudo netstat -plunt | grep :8080
+  129  sudo vi  jenkins
+  130  sudo netstat -plunt | grep :8080
+  131  sudo netstat -plunt | grep :9335
+  132  cd ..
+  133  service jenkins restart
+  134  sudo service jenkins restart
+  135  cd opt
+  136  cd Softwares
+  137  sudo service jenkins restart
+  138  sudo systemctl enable jenkins
+  139  sudo netstat -plunt | grep :9335
+  140  systemctl restart jenkins
+  141  sudo systemctl restart jenkins
+  142  sudo systemctl enable jenkins
+  143  sudo systemctl status jenkins
+  144  end
+  145  cd ..
+  146  cd etc/sysconfig
+  147  sudo vi jenkins
+  148  sudo systemctl restart jenkins
+  149  sudo netstat -plunt | grep :8080
+  150  sudo systemctl restart jenkins
+  151  sudo systemctl restart httpd
+  152  cd ..
+  153  cd opt/Softwares
+  154  sudo apt-get remove jenkins
+  155  sudo rm -rf /var/root/.jenkins ~/.jenkins
+  156  cd ..
+  157  cd App
+  158  sudo dnf install jenkins
+  159  cd ..
+  160  vi etc/httpd/conf/httpd.conf
+  161  sudo vi etc/httpd/conf/httpd.conf
+  162  clear
+  163  cd opt/Softwares
+  164  cd ..
+  165  cd etc/system
+  166  cd etc/sysconfig
+  167  sudo vi jenkins
+  168  systemctl edit jenkins.service
+  169  sudo systemctl edit jenkins.service
+  170  sudo netstat -plunt | grep :8080
+  171  sudo systemctl restart jenkins
+  172  sudo systemctl edit jenkins.service
+  173  sudo netstat -plunt | grep :9335
+  174  sudo netstat -plunt | grep :9335sudo netstat -plunt | grep :9335sQSSsS
+  175  sudo netstat -plunt | grep :9335
+  176  sudo su -
+  177  hostname -f
+  178  systemctl  status jenkins.service
+  179  systemctl edit jenkins.service
+  180  sudo systemctl edit jenkins.service
+  181  dnf remove jenkins-2.361.1-1.1.noarch
+  182  sudo dnf remove jenkins
+  183  sudo su -
+  184  sudo dnf install jenkins
+  185  systemctl enable --now jenkins.service
+  186  sudo systemctl enable --now jenkins.service
+  187  sudo systemctl edit jenkins.service
+  188  systemctl status jenkins.service
+  189  sudo ss | grep 8080
+  190  sudo netstat -tpu | grep 8080
+  191  sudo netstat -l | grep 8080
+  192  firewall-cmd --add-port=8080/tcp
+  193  sudo firewall-cmd --add-port=8080/tcp
+  194  sudo firewall-cmd --reload
+  195  sudo systemctl stop nginx.service
+  196  cd /etc/nginx/
+  197  ls
+  198  r
+  199  cd
+  200  sudo dnf remove nginx -y
+  201  firewall-cmd --list-all
+  202  sudo firewall-cmd --list-all
+  203  sudo firewall-cmd --add-port=8080/tcp
+  204  sudo firewall-cmd --add-port=8080/tcp --permanent
+  205  sudo firewall-cmd --reload
+  206  sudo systemctl status jenkins.service
+  207  history | tail
+  208  cat /var/lib/jenkins/secrets/initialAdminPassword
+  209  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+  210  cd /opt/Softwares/
+  211  cat nginx.conf
+  212  sudo systemctl edit jenkins.service
+  213  sudo netstat -plunt | grep :9335
+  214  cd etc/
+  215  cd etc
+  216  ls
+  217  pwd
+  218  sudo service jenkins stop
+  219  service jenkin status
+  220  sudo service jenkin status
+  221  sudo systemctl status jenkins.service [B
+  222  sudo netstat -plunt | grep :8080
+  223  sudo systemctl start jenkins
+  224  sudo systemctl restart jenkins
+  225  ip a
+  226  firewall-cmd
+  227  firewall-cmd --list-all
+  228  sudo firewall-cmd --list-all
+  229  hostname -f
+  230  sudo dnf install nginx -y
+  231  sudo systemctl edit jenkins.service
+  232  systemctl cat jenkins.service | head -n 20
+  233  sudo systemctl edit jenkins.service
+  234  sudo systemctl restart jenkins.service
+  235  firewall-cmd --add-port=9335/tcp --permanent
+  236  sudo firewall-cmd --add-port=9335/tcp --permanent
+  237  sudo firewall-cmd --reload
+  238  sudo systemctl enable --now nginx.service
+  239  sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
+  240  vi /etc/nginx/nginx.conf
+  241  sudo vi /etc/nginx/nginx.conf
+  242  cd /var/lib/jenkins/
+  243  ls
+  244  cd -
+  245  sudo vi /etc/nginx/nginx.conf
+  246  sudo nginx -t
+  247  sudo vi /etc/nginx/nginx.conf
+  248  sudo nginx -t
+  249  cat /opt/Softwares/nginx.conf
+  250  sudo vi /etc/nginx/nginx.conf
+  251  sudo systemctl restart nginx.service
+  252  getenforce
+  253  setenforce 0
+  254  setenforce 1
+  255  sudo setenforce 0
+  256  getenforce
+  257  setenforce 1
+  258  sudo setenforce 1
+  259  ls -lZ /var/lib/jenkins/
+  260  ls -lZ /usr/share/nginx/html/
+  261  sudo su -
+  262  sudo setsebool httpd_can_network_connect on -P
+  263  getenforce
+  264  sudo systemctl restart nginx.service
+  265  sudo setsebool httpd_can_network_connect off -P
+  266  cat /etc/nginx/nginx.conf
+  267  cat /var/log/nginx/error.log
+  268  sudo setenforce 0
+  269  getenforce
+  270  cat /opt/Softwares/nginx.conf
+  271  sudo vi /etc/nginx/nginx.conf
+  272  ls -la /var/lib/jenkins/
+  273  ls -lZ /usr/share/nginx/html/
+  274  ls -lZ /var/lib/jenkins/
+  275  sudo chcon -Rt httpd_sys_content_t /var/lib/jenkins/
+  276  ls -lZ /var/lib/jenkins/
+  277  sudo systemctl restart nginx.service
+  278  cat /var/log/nginx/error.log
+  279  getenforce
+  280  sudo chcon -Rt var_lib_t /var/lib/jenkins/
+  281  ls -lZ /var/lib/jenkins/
+  282  sudo usermod -aG jenkins nginx
+  283  sudo cp /opt/Softwares/nginx.conf /etc/nginx/nginx.conf
+  284  sudo nginx -t
+  285  systemctl restart nginx.service
+  286  sudo systemctl restart nginx.service
+  287  cat /etc/nginx/nginx.conf
+  288  systemctl status jenkins.service
+  289  wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+  290  ls
+  291  tar -xvf ngrok-v3-stable-linux-amd64.tgz
+  292  ls
+  293  mv ngrok /usr/local/bin/
+  294  sudo mv ngrok /usr/local/bin/
+  295  ngrok config add-authtoken 68FhD4uVDWDDoMXbWH7dE_7B64XcxZkTqK7e6jquCVr
+  296  firewall-cmd --add-port=9335/tcp --permanent
+  297  sudo firewall-cmd --add-port=9335/tcp --permanent
+  298  sudo firewall-cmd --reload
+  299  ngrok http --scheme=https 443
+  300  ngrok http --scheme=http 9335
+  301  ngrok http 9335
+  302  npm install --global smee-client
+  303  sudo yum install -y gcc-c++ make
+  304  curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
+  305  sudo yum install -y nodejs
+  306  npm install --global smee-client
+  307  sudo npm install --global smee-client
+  308  smee --url https://smee.io/n7ITsL9NTm4s68h --path /github-webhook/ --port 9335
+  309  wget https://mastechinfotrellis-my.sharepoint.com/:u:/p/tamil/EXr2CGDlBGRHunkZILk2UXMBC5y9t5Y5D0xKifivdy2YyA
+  310  mv /tmp/mastechinfotrellis.com.zip /opt/Softwares/
+  311  ls
+  312  cd /opt/Softwares/
+  313  ls
+  314  unzip mastechinfotrellis.com.zip
+  315  ks
+  316  ls
+  317  ls /opt/
+  318  ls
+  319  rm mastechinfotrellis.com*
+  320  ls
+  321  exit
+  322  cat /etc/nginx/nginx.conf
+  323  scp /etc/nginx/nginx.conf pashutosh@10.100.15.26:/tmp
+  324  exit
+  325  smee --url https://smee.io/n7ITsL9NTm4s68h --path /github-webhook/ --port 9335
+  326  smee --url https://smee.io/n7ITsL9NTm4s68h --path /github-webhook/ --port 9335
+  327  dnf install tmux
+  328  sudo dnf install tmux
+  329  tmux
+  330  tmux attach-session
+  331  ip a
+  332  sudo systemctl stop jenkins.service
+  333  sudo killall java
+  334  top
+  335  sudo vi /etc/yum.repos.d/pgdg-redhat-all.repo
+  336  sudo dnf -y install postgresql14 postgresql14-server
+  337  sudo rm -rf /etc/yum.repos.d/pgdg-redhat-all.repo
+  338  sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+  339  sudo dnf -y install postgresql14 postgresql14-server
+  340  sudo dnf -y install postgresql13 postgresql13-server
+  341  cat /etc/os-release
+  342  psql
+  343  sudo firewall-cmd --add-port=9000/tcp --permanent
+  344  sudo firewall-cmd --reload
+  345  sudo systemctl start jenkins.service
+  346  sudo nano /etc/systemd/system/sonar.service
+  347  sudo vi /etc/systemd/system/sonar.service
+  348  sudo systemctl daemon-reload
+  349  sudo systemctl stop sonar.service
+  350  sudo systemctl start sonar.service
+  351  journalctl -xeu sonar.service
+  352  sudo journalctl -xeu sonar.service
+  353  systemctl status sonar.service
+  354  sudo vi /etc/systemd/system/sonar.service
+  355  exec su - appadmin
+  356  cd /var/lib/jenkins/
+  357  ls
+  358  ls -la
+  359  cd
+  360  free -h
+  361  sudo yum install vim wget curl -y
+  362  sudo yum install wget unzip -y
+  363  sudo vim /etc/security/limits.conf
+  364  sudo useradd sonar
+  365  sudo passwd sonar
+  366  sudo update-alternatives --config java
+  367  sudo  yum install -y
+  368  cd /tmp
+  369  sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.0.47736.zip
+  370  sudo unzip sonarqube-9.1.0.47736.zip -d /opt
+  371  sudo mv /opt/sonarqube-9.1.0.47736 /opt/sonarqube
+  372  ls /opt/
+  373  sudo groupadd sonar
+  374  sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar
+  375  ls -la /opt/sonarqube/
+  376  sudo userdel sonar
+  377  sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar
+  378  sudo groupadd sonar
+  379  sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar
+  380  ls -la /opt/sonarqube/
+  381  tail /etc/passwd
+  382  ccd
+  383  cd
+  384  sudo chown -R sonar:sonar /opt/sonarqube
+  385  ls -la /opt/sonarqube/
+  386  sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+  387  sudo dnf -qy module disable postgresql
+  388  sudo dnf -y install postgresql14 postgresql14-server
+  389  cat /etc/os-release
+  390  uname -a
+  391  cd /etc/yum.repos.d/
+  392  ls
+  393  vi pgdg-redhat-all.repo
+  394  yum update
+  395  sudo yum update
+  396  cd
+  397  sudo dnf -qy module enable postgresql
+  398  sudo dnf remove pgd*
+  399  sudo dnf -qy module enable postgresql
+  400  dnf module list --enabled | grep postgres
+  401  sudo dnf module reset postgresql
+  402  sudo dnf install postgresql
+  403  sudo /usr/pgsql-14/bin/postgresql-14-setup initdb
+  404  ls /usr/local/bin/ | grep post
+  405  ls /bin/ | grep post
+  406  sudo systemctl start postgresql-14
+  407  sudo systemctl start postgresql
+  408  sudo systemctl start postgres
+  409  sudo dnf install postgresql
+  410  whereis postgresql
+  411  sudo dnf remove postgresql
+  412  sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+  413  dnf module list postgresql
+  414  sudo yum remove -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+  415  sudo yum remove -y pgdg*
+  416  sudo dnf -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+  417  sudo dnf -qy module disable postgresql
+  418  sudo dnf -y install postgresql13 postgresql13-server
+  419  sudo yum remove -y pgdg*
+  420  sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/F-36-x86_64/pgdg-fedora-repo-latest.noarch.rpm
+  421  sudo dnf -y install postgresql13 postgresql13-server
+  422  sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
+  423  sudo systemctl start postgresql-13
+  424  sudo systemctl enable postgresql-13
+  425  sudo passwd postgres
+  426  su -- postgres
+  427  su - postgres
+  428  sudo vim /opt/sonarqube/conf/sonar.properties
+  429  sudo vim /opt/sonarqube/bin/linux-x86-64/sonar.sh
+  430  sudo su sonar
+  431  su sonar
+  432  sudo passwd sonar
+  433  su sonar
+  434  ls /opt/sonarqube/bin/linux-x86-64/
+  435  su sonar
+  436  systemctl status sonar.service
+  437  sudo systemctl daemon-reload
+  438  systemctl status sonar.service
+  439  sudo systemctl start sonar.service
+  440  systemctl status sonar.service
+  441  ./nexus start
+  442  exec su -
+  443  mv /tmp/nexus-3.41.1-01-unix.tar.gz  /opt/
+  444  sudo mv /tmp/nexus-3.41.1-01-unix.tar.gz  /opt/
+  445  cd /opt/
+  446  ls
+  447  sudo tar -zvf nexus-3.41.1-01-unix.tar.gz
+  448  sudo tar -xzvf nexus-3.41.1-01-unix.tar.gz
+  449  ls
+  450  cd nexus-3.41.1-01/
+  451  ./nexus start
+  452  ls
+  453  cd bin/
+  454  ls
+  455  ./nexus start
+  456  cat ~/.bash_profile
+  457  update-alternatives --config java
+  458  vi ~/.bash_profile
+  459  bash
+  460  sudo exec su -
+  461  exec su -
+  462  exit
+  463  cd /opt/nexus-3.41.1-01/bin/
+  464  ./nexus start
+  465  echo $INSTALL4J_JAVA_HOME
+  466  ls -la
+  467  sudo vi nexus
+  468  ./nexus start
+  469  sudo dnf install openjdk-8
+  470  sudo dnf install openjdk
+  471  sudo dnf search openjdk
+  472  sudo dnf install java-1.8.0-openjdk.x86_64
+  473  sudo dnf update
+  474  update-alternatives --config java
+  475  sudo update-alternatives --config java
+  476  sudo vi nexus
+  477  ./nexus start
+  478  sudo firewall-cmd --add-port=8081/tcp --permanent
+  479  sudo firewall-cmd --reload
+  480  sudo firewall-cmd --list-all
+  481  ./nexus stop
+  482  ./nexus start
+  483  sudo getenforce
+  484  sudo setenforce 0
+  485  sudo getenforce
+  486  sudo systemctl stop nginx.service
+  487  cat nexus
+  488  ./nexus status
+  489  ./nexus start
+  490  ./nexus status
+  491  ls
+  492  ls ../
+  493  ./nexus run
+  494  cd ../
+  495  cd ...
+  496  cd ../
+  497  sudo chown -R appadmin:appadmin nexus-3.41.1-01
+  498  sudo chown -R appadmin:appadmin nexus-3.41.1-01/
+  499  sudo chown -R appadmin nexus-3.41.1-01/
+  500  sudo chgrp -R appadmin nexus-3.41.1-01/
+  501  sudo chgrp -R Appdevelop nexus-3.41.1-01/
+  502  ls -la nexus-3.41.1-01
+  503  cd nexus-3.41.1-01/bin/
+  504  ./nexus run
+  505  find -t file jvm.log
+  506  find --type file jvm.log
+  507  cd ..
+  508  ls
+  509  cd bin/
+  510  ls
+  511  ls /opt/
+  512  cd /opt/sonatype-work/
+  513  ls
+  514  cd nexus3/
+  515  ls
+  516  cd log/
+  517  ls
+  518  cd ..
+  519  ls -la
+  520  cd ../../
+  521  sudo chown -R appadmin:Appdevelop sonatype-work/
+  522  cd nexus-3.41.1-01/bin/
+  523  ./nexus run
+  524  ./nexus start
+  525  ./nexus status
+  526  sudo systemctl start jenkins.service
+  527  sudo systemctl start nginx.service
+  528  sudo systemctl start jenkins.service
+  529  journalctl -xeu jenkins.service
+  530  sudo journalctl -xeu jenkins.service
+  531  cat /opt/sonatype-work/nexus3/
+  532  ls
+  533  cat /opt/sonatype-work/nexus3/admin.password
+  534  ip a
+  535  exit
+  536  smee --url https://smee.io/n7ITsL9NTm4s68h --path /github-webhook/ --port 9335
+  537  history
+  538  sudo dnf -y remove postgresql13 postgresql13-server
+  539  sudo yum remove -y pgdg*
+  540  sudo dnf module reset postgresql
+  541  sudo userdel sonar
+  542  sudo killall 90496
+  543  sudo kill -9 90496
+  544  sudo userdel sonar
+  545  sudo userdel -f sonar
+  546  sudo groupdel sonar
+  547  ps aux | grep nexus
+  548  sudo killall nexus
+  549  cd /opt/
+  550  ls
+  551  sudo rm -rf nexus-3.41.1-01*
+  552  ps aux | grep sonar
+  553  ls
+  554  sudo rm -rf sona*
+  555  ls
+  556  cd
+  557  ls
+  558  reboot
+  559  sudo reboot
+  560  sudo systemctl start jenkins.service
+  561  journalctl -xeu jenkins.service
+  562  sudo journalctl -xeu jenkins.service
+  563  sudo update-alternatives --config java
+  564  journalctl -xeu jenkins.service
+  565  sudo systemctl start jenkins.service
+  566  sudo dnf update
+  567  sudo vi /etc/systemd/system/sonar.service
+  568  exit
+  569  cd /tmp
+  570   sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.0.47736.zip
+  571   sudo unzip sonarqube-9.1.0.47736.zip -d /opt
+  572    sudo mv /opt/sonarqube-9.1.0.47736 /opt/sonarqube
+  573    ls /opt/
+  574    sudo groupadd sonar
+  575    sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar
+  576    chown -R sonar:sonar /opt/sonarqube
+  577    ls -la /opt/sonarqube/
+  578  sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm   # centos repository
+  579  sudo dnf -qy module disable postgresql
+  580  sudo dnf -y install postgresql13 postgresql13-server
+  581  sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
+  582   sudo systemctl start postgresql-13
+  583   sudo systemctl enable postgresql-13
+  584    sudo chown -R sonar:sonar /opt/sonarqube
+  585   sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/F-36-x86_64/pgdg-fedora-repo-latest.noarch.rpm
+  586  sudo dnf -qy module disable postgresql
+  587  sudo dnf -y install postgresql13 postgresql13-server
+  588  sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
+  589   sudo systemctl start postgresql-13
+  590   sudo systemctl enable postgresql-13
+  591  sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
+  592   sudo passwd postgres
+  593   su - postgres
+  594  sudo vim /opt/sonarqube/conf/sonar.properties
+  595   sudo vim /opt/sonarqube/bin/linux-x86-64/sonar.sh
+  596  sudo su sonar
+  597  exit
+  598  cd /home/
+  599  ll
+  600  cd sonar/
+  601  ll
+  602  sudo -i
+  603  tmux attach-session
+  604  exit
+  605  tmux list-sessions
+  606  tmux attach-session
+  607  npm --version
+  608  smee --help
+  609  history
+  610  tmux
+  611  sudo -i
+  612  sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+  613  sudo tar xzf apache-maven-3.8.6-bin.tar.gz -C /opt
+  614  cd /opt && sudo ln -s apache-maven-3.8.6 maven
+  615  sudo vi /etc/profile.d/maven.sh
+  616  source /etc/profile.d/maven.sh
+  617  mvn -version
+  618  mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=CubeGeneratorWeb -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+  619  mvn package
+  620  cd apache-maven-3.8.6/
+  621  mvn package
+  622  cd ..
+  623  mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+  624  ll
+  625  mkdir ~/mvn-projects
+  626  cd ~/mvn-projects
+  627  mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=CubeGeneratorWeb -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+  628  pwd
+  629  ll
+  630  cd CubeGeneratorWeb/
+  631  ll
+  632  vi pom.xml
+  633  mvn package
+  634  ll
+  635  vi pom.xml
+  636  java -version
+  637  ll
+  638  java -version
+  639  history
+
+Jenkins 02 -Root User
+    1  pwd
+    2  cal
+    3  ipconfig
+    4  ip add
+    5  shutdown
+    6  hostname
+    7  sudo hostnamectl set-hostname chn-mit-jenkins02
+    8  hostname
+    9  systemctl restart sssd
+   10  init 6
+   11  yum install xorg* x11* xauth*
+   12  yum install realmd oddjob-mkhomedir oddjob samba-winbind-clients samba-winbind samba-common-tools samba-winbind-krb5-locator sssd adcli
+   13  realm join -U NRagunath corp.mastechinfotrellis.com
+   14  realm list
+   15  vi /etc/sssd/sssd.conf
+   16  vi /etc/sudoers.d/sudoers
+   17  cat sudoers
+   18  cd etc
+   19  systemctl restart sssd
+   20  groupadd -g 9002 Appdevelop
+   21  useradd -u 9001 -g Appdevelop -m -d /home/appadmin appadmin
+   22  cd /opt/
+   23  mkdir Softwares App
+   24  chmod 775 -R *
+   25  chown -R appadmin:Appdevelop *
+   26  passwd appadmin
+   27  init 6
+   28  pwd
+   29  cd /etc
+   30  ll
+   31  pwd
+   32  cd /opt
+   33  ll
+   34  exit
+   35  cat /etc/os-release
+   36  df -h
+   37  free -h
+   38  wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+   39  cat /etc/yum.repos.d/
+   40  ls /etc/yum.repos.d/
+   41  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+   42  rm -rf /etc/yum.repos.d/jenkins.repo
+   43  sudo dnf install java-11-openjdk
+   44  free -h
+   45  ls /home/
+   46  exit
+   47  dnf update -y
+   48  exit
+   49  id
+   50  usermod -aG root pashutosh
+   51  su - pashutosh
+   52  su - appadmin
+   53  java --version
+   54  update-alternatives --config java
+   55  firewall-cmd --state
+   56  firewall-cmd --add-port=8080/tcp --permanent
+   57  firewall-cmd --reload
+   58  firewall-cmd --list-all
+   59  hostname-f
+   60  hostname -f
+   61  ping chn-mit-jenkins01
+   62  su - pashutosh
+   63  exit
+   64  cd /opt/
+   65  ls
+   66  java -jar agent.jar -jnlpUrl http://chn-mit-jenkins01.corp.mastechinfotrellis.com:8080/computer/Jenkins%2D02/jenkins-agent.jnlp -secret 5b9fd7eeaf0382f4bd86ca8a28ff511fdd94187f653b6c515acec11e6870c4c9 -workDir "/opt/App"
+   67  cd /opt/Softwares/
+   68  wget http://chn-mit-jenkins01.corp.mastechinfotrellis.com:8080/jnlpJars/agent.jar
+   69  ls
+   70  java -jar agent.jar -jnlpUrl http://chn-mit-jenkins01.corp.mastechinfotrellis.com:8080/computer/Jenkins%2D02/jenkins-agent.jnlp -secret 5b9fd7eeaf0382f4bd86ca8a28ff511fdd94187f653b6c515acec11e6870c4c9 -workDir "/opt/App"
+   71  visudo
+   72  exec su -
+   73  exit
+   74  dnf update
+   75  reboot
+   76  vi /etc/dnf/dnf.conf
+   77  dnf update
+   78  ls /
+   79  ls /opt/
+   80  ls
+   81  su - appadmin
+   82  ls /home/
+   83  ssh-keyscan -H chn-mit-jenkins03
+   84  ls
+   85  scp anaconda-ks.cfg  appadmin@10.100.15.46:/usr/local/tomcat/webapps
+   86  ls .ssh/
+   87  su - appadmin
+   88  cd /etc/ssh/
+   89  cat sshd_config
+   90  vi sshd_config
+   91  systemctl restart sshd
+   92  history
+
+
+Jenkins 02 - Appadmin User
+    1  exit
+    2  mkdir .ssh
+    3  cd .ssh/
+    4  ls
+    5  vi authorized_keys
+    6  exit
+    7  sudo su -
+    8  id
+    9  ls /opt/
+   10  ls
+   11  cd /opt/App/
+   12  ls
+   13  cd ../Softwares/
+   14  cd ..
+   15  ls -la
+   16  systemctl start jenkins
+   17  exit
+   18  ls
+   19  mkdir builds
+   20  pwd
+   21  cd builds/
+   22  ls
+   23  pwd
+   24  wget https://jenkins.corp.mastechinfotrellis.com/jnlpJars/agent.jar
+   25  wget https://jenkins.corp.mastechinfotrellis.com/jnlpJars/agent.jar --no-check-certificate
+   26  ls
+   27  mv agent.jar ../
+   28  ls
+   29  cd
+   30  ls
+   31  nohup java -jar agent.jar -jnlpUrl https://jenkins.corp.mastechinfotrellis.com/computer/slave%2D01/jenkins-agent.jnlp -secret 97529124f099a93c2f8adc53c27f342990f91a5fa58f95bdc4cd639f14e6c7bd -workDir "/home/appadmin/builds" &
+   32  java -jar agent.jar -jnlpUrl https://jenkins.corp.mastechinfotrellis.com/computer/slave%2D01/jenkins-agent.jnlp -secret 97529124f099a93c2f8adc53c27f342990f91a5fa58f95bdc4cd639f14e6c7bd -workDir "/home/appadmin/builds"
+   33  java -jar agent.jar -jnlpUrl https://jenkins.corp.mastechinfotrellis.com/computer/slave%2D01/jenkins-agent.jnlp -secret 97529124f099a93c2f8adc53c27f342990f91a5fa58f95bdc4cd639f14e6c7bd -workDir "/home/appadmin/builds" -noCertificateCheck
+   34  sudo dnf install git
+   35  git --version
+   36  mkdir vsc
+   37  ls
+   38  cd vsc/
+   39  ls
+   40  pwd
+   41  git init
+   42  cd .git/
+   43  ls
+   44  cd ..
+   45  ls -la
+   46  cd .git/
+   47  ls
+   48  cd ..
+   49  ls
+   50  ls -la
+   51  cd ..
+   52  git clone https://github.com/AshutoshPatole/indie-clean-copy.git
+   53  cd indie-clean-copy/
+   54  ls
+   55  ls -la
+   56  ls /tmp/
+   57  mv /tmp/github ~/.ssh/github
+   58  ls ~/.ssh/
+   59  mv ~/.ssh/github ~/.ssh/id_ed52219
+   60  touch sample
+   61  git status
+   62  git add .
+   63  git commit -m "check"
+   64  git config --global user.email apatole479@gmail.com
+   65  git config --global user.name AshutoshPatole
+   66  git commit -m "check"
+   67  git push origin master
+   68  git commit -m "check v2"
+   69  ssh -T git@github
+   70  cd ~/.ssh/
+   71  ks
+   72  ls
+   73  mv id_ed52219 id_ed25519
+   74  cd -
+   75  git push origin master
+   76  cd .git/
+   77  vi config
+   78  cd ..
+   79  git push origin master
+   80  sudo chmod 400 ~/.ssh/id_ed25519
+   81  git push origin master
+   82  cd indie-clean-copy/
+   83  ls
+   84  vi sample
+   85  git add .
+   86  git commit -m "jenkins build check
+   87  "
+   88  git push origin master
+   89  vi sample
+   90  git add .
+   91  git commit -m "jenkins build v2"
+   92  git push origin master
+   93  ip a
+   94  ls
+   95  cd builds/
+   96  ls
+   97  cd workspace/
+   98  ls
+   99  cd test-script
+  100  ls
+  101  cd ../../
+  102  cd remoting/
+  103  ls
+  104  cd
+  105  tree builds/
+  106  cd builds/remoting/jarCache/
+  107  ls -la
+  108  cd
+  109  ls
+  110  df -h
+  111  cd /
+  112  ll
+  113  wget https://dlcdn.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz
+  114  sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz
+  115  sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+  116  sudo tar xzf apache-maven-3.8.6-bin.tar.gz -C /opt
+  117  cd /opt && sudo ln -s apache-maven-3.8.6 maven
+  118  ll
+  119  sudo vi /etc/profile.d/maven.sh
+  120  source /etc/profile.d/maven.sh
+  121  mvn -version
+  122  mvn -h
+  123  ll
+  124  mkdir ~/mvn-projects
+  125  ll
+  126  cd ~/mvn-projects
+  127  ll
+  128  mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+  129  tree my-app/
+  130  ll
+  131  cd my-app/
+  132  ll
+  133  cd src/
+  134  ll
+  135  cd main/
+  136  ll
+  137  mvn package
+  138  ll
+  139  cd ..
+  140  mvn package
+  141  ll
+  142  cat pom.xml
+  143  vi pom.xml
+  144  mvn package
+  145  vi pom.xml
+  146  mvn package
+  147  ll
+  148  pwd
+  149  ll
+  150  cd src/
+  151  ll
+  152  cd main/
+  153  ll
+  154  cd java/
+  155  ll
+  156  cd com/
+  157  ll
+  158  cd mycompany/
+  159  ll
+  160  cd app/
+  161  ll
+  162  cd ..
+  163  cd test/
+  164  ll
+  165  cd java/
+  166  ll
+  167  cd com/
+  168  ll
+  169  cd mycompany/
+  170  ll
+  171  cd app/
+  172  ll
+  173  pwd
+  174  cd ..
+  175  ll
+  176  cd target/
+  177  ll
+  178  cd ..
+  179  ll
+  180  history
+  181  ll
+  182  cd target/
+  183  ll
+  184  cd maven-archiver/
+  185  ll
+  186  cd ..
+  187  cd classes/
+  188  ll
+  189  cd com/
+  190  ll
+  191  cd..
+  192  cd ..
+  193  cd .
+  194  cd ..
+  195  sudo unlink /opt/maven
+  196  sudo rm -rf /opt/apache-maven-3.8.6
+  197  rm -f /etc/profile.d/maven.sh
+  198  sudo rm -f /etc/profile.d/maven.sh
+  199  mvn --version
+  200  mvn -version
+  201  java -version
+  202  sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+  203  sudo tar xzf apache-maven-3.8.6-bin.tar.gz -C /opt
+  204  cd /opt && sudo ln -s apache-maven-3.8.6 maven
+  205  sudo vi /etc/profile.d/maven.sh
+  206  source /etc/profile.d/maven.sh
+  207  mvn -version
+  208  mkdir ~/mvn-projects
+  209  cd ~/mvn-projects
+  210  mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+  211  ll
+  212  cd my-app/
+  213  ll
+  214  cd ..
+  215  ll
+  216  sudo rm -rf my-app
+  217  ll
+  218  mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+  219  tree my-app/
+  220  ll
+  221  cd my-app/
+  222  ll
+  223  vi pom.xml
+  224  pwd
+  225  ll
+  226  pwd
+  227  sudo update-alternatives --config java
+  228  java -version
+  229  ll
+  230  cat pom.xml
+  231  vi pom.xml
+  232  cd /home/appadmin/
+  233  ll
+  234  mkdir ~/mvn-project
+  235  cd ~/mvn-project
+  236  ll
+  237  mvn archetype:generate -DgroupId=com.sample.maven.first -DartifactId=com.sample.maven.first -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+  238  ll
+  239  cd com.sample.maven.first/
+  240  ll
+  241  cat pom.xml
+  242  vi pom.xml
+  243  whereis mvn
+  244  history
+  245  sudo -i
+  246  ssh-keygen -t ed25519
+  247  whereis mavenproject
+  248  cd /home/appadmin/builds/workspace/
+  249  ll
+  250  cd Second\ Stage\ Pipeline
+  251  ll
+  252  cd target/
+  253  ll
+  254  pwd
+  255  ssh appadmin@10.100.15.46
+  256  cd .ssh/
+  257  ls
+  258  cat known_hosts
+  259  rm -rf known_hosts
+  260  ls
+  261  vi authorized_keys
+  262  sudo su -
+  263  cd .ssh/
+  264  ll
+  265  cd /home/
+  266  ll
+  267  cd appadmin/
+  268  ll
+  269  cd .ssh/
+  270  ll
+  271  rm -rf id_ed25519
+  272  ll
+  273  ssh-keygen -t ed25519
+  274  cat id_ed25519
+  275  cat id_ed25519.pub
+  276  ssh appadmin@chn-mit-jenkins03
+  277  ll
+  278  rm -rf authorized_keys known_hosts*
+  279  ll
+  280  ssh appadmin@chn-mit-jenkins03
+  281  ping chn-mit-jenkins03
+  282  java -version
+  283  history
+  284  sudo -i
+  285  exit
+  286  history
+  287  ls
+  288  cd builds/workspace/
+  289  ls
+  290  ls | grep second
+  291  ls | grep -i second
+  292  cd builds/workspace/
+  293  ls
+  294  cd Third\ Stage\ Pipeine
+  295  ls
+  296  cd target/
+  297  ls
+  298  cd /opt/apache-maven-3.8.6/
+  299  ll
+  300  cd bin/
+  301  ll
+  302  cat m2.conf
+  303  cd ..
+  304  cd lib/
+  305  cd ext/
+  306  ll
+  307  cd ..
+  308  ll
+  309  cd
+  310  cd /home/appadmin/builds/workspace/HelloWorldsample
+  311  LL
+  312  ll
+  313  cd sample/
+  314  ll
+  315  mv pom.xml src/ target/ /home/appadmin/builds/workspace/HelloWorldsample
+  316  cd /opt/maven/
+  317  ll
+  318  cd /bin/
+  319  ll
+  320  cd ...
+  321  cd..
+  322  cd ..
+  323  ll
+  324  mvn -version
+  325  cd /opt/
+  326  ll
+  327  cd maven/
+  328  ll
+  329  cd ..
+  330  cd apache-maven-3.8.6/
+  331  ll
+  332  cd /bin/
+  333  ll
+  334  pwd
+  335  cd /opt/apache-maven-3.8.6/bin/
+  336  ll
+  337  cat m2.conf
+  338  cat mvn.cmd
+  339  cd ..
+  340  ll
+  341  cd conf/
+  342  ll
+  343  cat settings.xml
+  344  cd ..
+  345  ll
+  346  cd lib/
+  347  ll
+  348  whereis maven
+  349  whereis workspace
+  350  cd
+  351  whereis workspace
+  352  whereis jenkins
+  353  cd .m2/repository/
+  354  ll
+  355  cd HelloWorld/
+  356  ll
+  357  cd com/
+  358  ll
+  359  cd /home/appadmin/builds/workspace/Nexuspipeline/simple/target/
+  360  ll
+  361  chmod 744 simple.war
+  362  ll
+  363  cd
+  364  ll
+  365  df -H
+  366  history
+
+Jenkins 03 -Root User
+    1  sudo hostnamectl set-hostname chn-mit-jenkins03
+    2  init 6
+    3  yum install xorg* x11* xauth*
+    4  yum install realmd oddjob-mkhomedir oddjob samba-winbind-clients samba-winbind samba-common-tools samba-winbind-krb5-locator sssd adcli
+    5  realm join -U NRagunath corp.mastechinfotrellis.com
+    6  realm list
+    7  vi /etc/sssd/sssd.conf
+    8  vi /etc/sudoers.d/sudoers
+    9  groupadd -g 9002 Appdevelop
+   10  useradd -u 9001 -g Appdevelop -m -d /home/appadmin appadmin
+   11  cd /opt/
+   12  mkdir Softwares App
+   13  chmod 775 -R *
+   14  chown -R appadmin:Appdevelop *
+   15  passwd appadmin
+   16  init 6
+   17  visudo
+   18  exit
+   19  ip addr
+   20  realm list
+   21  exit
+   22  history
+
+Jenkins 03 -Appadmin User
+ 1  sudo vi
+    2  exit
+    3  cd .ssh/
+    4  ls
+    5  cat authorized_keys
+    6  vi authorized_keys
+    7  sudo firewall-cmd --add-port=8080/tcp --permanent
+    8  sudo firewall-cmd --reload
+    9  cd /opt/apache-tomcat-9.0.67/
+   10  sudo time find / -name context.xml
+   11  sudo time find /opt/apache-tomcat-9.0.67/ -name context.xml
+   12  cd /opt/sonatype-work/
+   13  ll
+   14  cd nexus3/
+   15  ll
+   16  cat admin.password
+   17  cd
+   18  cd /opt/
+   19  ll
+   20  sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.54/bin/apache-tomcat-9.0.54.tar.gz
+   21  sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.tar.gz
+   22  ll
+   23  sudo tar -xvzf apache-tomcat-9.0.67.tar.gz
+   24  cd apache-tomcat-9.0.67/
+   25  ll
+   26  cd bin/
+   27  ll
+   28  cd bin/
+   29  cd ..
+   30  ll
+   31  sudo chown -R appadmin:Appdevelop apache-tomcat-9.0.67
+   32  ll
+   33  cd apache-tomcat-9.0.67/bin/
+   34  ll
+   35  ./startup.sh
+   36  find / -name context.xml
+   37  sudo find / -name context.xml
+   38  sudo cd /opt/apache-tomcat-9.0.67/webapps/manager/META-INF/
+   39  ll
+   40  sudo cd /opt/apache-tomcat-9.0.67/webapps/manager/META-INF/
+   41  ll
+   42  cd /opt/apache-tomcat-9.0.67/webapps/manager/META-INF/
+   43  ll
+   44  sudo vi context.xml
+   45  cd ..
+   46  ll
+   47  cd host-manager/
+   48  ll
+   49  cd META-INF/
+   50  ll
+   51  sudo vi context.xml
+   52  cd
+   53  cd /opt/apache-tomcat-9.0.67/conf/
+   54  ll
+   55  sudo vi tomcat-users.xml
+   56  cd ..
+   57  cd bin/
+   58  ./startup.sh
+   59  cd ..
+   60  cd conf/
+   61  ll
+   62  cat context.xml
+   63  ll
+   64  cat tomcat-users.xml
+   65  cd ..
+   66  sudo cd /opt/apache-tomcat-9.0.67/webapps
+   67  ll
+   68  cd webapps
+   69  LL
+   70  ll
+   71  cd manager/
+   72  cd META-INF/
+   73  ll
+   74  cat context.xml
+   75  cd ..
+   76  ll
+   77  cd host-manager/
+   78  cd META-INF/
+   79  vi context.xml
+   80  cd ..
+   81  cd manager/
+   82  cd META-INF/
+   83  vi context.xml
+   84  cd /opt/apache-tomcat-9.0.67/bin/
+   85  ./startup.sh
+   86  cd /tmp/
+   87  ll
+   88  cd /opt/apache-tomcat-9.0.67/
+   89  ll
+   90  cd webapps/
+   91  ll
+   92  pwd
+   93  ll
+   94  cat com.sample.maven.first-1.0-SNAPSHOT.jar
+   95  ll
+   96  sudo mkdir myapp
+   97  ll
+   98  cd myapp/
+   99  ll
+  100  cd ..
+  101  mv com.sample.maven.first-1.0-SNAPSHOT.jar /opt/apache-tomcat-9.0.67/webapps/myapp/
+  102  sudo mv com.sample.maven.first-1.0-SNAPSHOT.jar /opt/apache-tomcat-9.0.67/webapps/myapp/
+  103  ll
+  104  cd myapp/
+  105  ll
+  106  cd /opt/apache-tomcat-9.0.67/bin/
+  107  ./startup.sh
+  108  cd /home/appadmin/
+  109  ll
+  110  cd /root/
+  111  sudo cd /root/
+  112  cd /
+  113  ll
+  114  cd home/
+  115  ll
+  116  cd appadmin/
+  117  ll
+  118  cd /usr/
+  119  ll
+  120  cd
+  121  cd /opt/
+  122  ll
+  123  cd apache-tomcat-9.0.67/
+  124  ll
+  125  cd webapps/
+  126  ll
+  127  cd myapp/
+  128  ll
+  129  pwd
+  130  java - jar com.sample.maven.first-1.0-SNAPSHOT.jar
+  131  sudo java - jar com.sample.maven.first-1.0-SNAPSHOT.jar
+  132  ll
+  133  cd /opt/apache-tomcat-9.0.67/
+  134  ll
+  135  cd webapps/
+  136  LL
+  137  ll
+  138  sudo chown -R appadmin:Appdevelop myapp/
+  139  ll
+  140  cd myapp/
+  141  ll
+  142  cd /opt/apache-tomcat-9.0.67/
+  143  ll
+  144  cd /opt/apache-tomcat-9.0.67/
+  145  ll
+  146  cd webapps/
+  147  ll
+  148  cd myapp/
+  149  ll
+  150  cd ..
+  151  ll
+  152  chmod 775 myapp/
+  153  ll
+  154  cd myapp/
+  155  ll
+  156  chmod 775 com.sample.maven.first-1.0-SNAPSHOT.jar
+  157  ll
+  158  cd ..
+  159  cd /opt/apache-tomcat-9.0.67/webapps/
+  160  ll
+  161  cd myapp/
+  162  ll
+  163  cd ..
+  164  ll
+  165  cd sample/
+  166  ll
+  167  LL
+  168  ll
+  169  cd ..
+  170  ll
+  171  cd sample/
+  172  ll
+  173  java -version
+  174  sudo -i
+  175  clear
+  176  java -version
+  177  sudo yum install java-1.8.0-openjdk.x86_64
+  178  java -version
+  179  sudo alternatives --config java
+  180  java -version
+  181  sudo yum makecache --refresh
+  182  sudo yum -y install nexus
+  183  /usr/
+  184  ll
+  185  cd /usr/
+  186  ll
+  187  whereis nexus
+  188  which nexus
+  189  which nexus-4.*
+  190  sudo dnf remove nexus
+  191  sudo wget https://download.sonatype.com/nexus/3/nexus-3.42.0-01-unix.tar.gz
+  192  ls
+  193  mv nexus-3.42.0-01-unix.tar.gz /opt/
+  194  sudo mv nexus-3.42.0-01-unix.tar.gz /opt/
+  195  cd /opt/
+  196  ll
+  197  tar -zxvf nexus-3.42.0-01-unix.tar.gz
+  198  sudo tar -zxvf nexus-3.42.0-01-unix.tar.gz
+  199  ll
+  200  cd nexus-3.42.0-01/
+  201  ll
+  202  cd bin/
+  203  ll
+  204  ./nexus run
+  205  ll
+  206  cd ..
+  207  ll
+  208  sudo chown -R appadmin:appadmin sonatype-work/ nexus-3.42.0-01
+  209  sudo chown -R appadmin:Appdevelop sonatype-work/ nexus-3.42.0-01
+  210  ll
+  211  cd nexus-3.42.0-01/bin/
+  212  ll
+  213  sudo ./nexus run
+  214  sudo firewall-cmd --add-port=8081/tcp --permanent
+  215  sudo firewall-cmd --reload
+  216  ./nexus start
+  217  ./nexus status
+  218  ./nexus run
+  219  sudo ./nexus run
+  220  whereis nexus
+  221  history

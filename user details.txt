@@ -1,0 +1,59 @@
+server ip: chn-mit-jenkins01
+username: appadmin
+password: fJh$!EnRdMMZ$2
+10.100.15.78
+
+server ip: chn-mit-jenkins02
+username: appadmin
+password: BD7pU86jYK2*
+.77
+
+
+server ip: chn-mit-jenkins03
+username: appadmin
+password: fJh$!EnRdMMZ$2
+root:Welcome#12
+.67
+
+tcuxmbsxgjxtfcma -- Gmail key
+
+https://jenkins.corp.mastechinfotrellis.com/
+username: admin
+password: Zfs96dajzxYK3Z9g@A4cGp@UF
+
+nexus - http://chn-mit-jenkins01.corp.mastechinfotrellis.com:8081/
+sonarqube http://chn-mit-jenkins01.corp.mastechinfotrellis.com:9000/
+username: admin
+password: fJh$!EnRdMMZ$2
+
+https://app.slack.com/client/T047XV8KMBL/C048AJX1J1X
+
+http://10.100.15.46:8081/ -- Nexus url -- admin/fJh$!EnRdMMZ$2
+http://10.100.15.78:9000/ -- Sonarqube url -- admin/fJh$!EnRdMMZ$2
+http://10.100.15.78:9335/ -- Jenkins url -- admin/Zfs96dajzxYK3Z9g@A4cGp@UF
+http://10.100.15.46:8080/ -- Tomcat url -- tomcat/tomcat
+
+https://help.sonatype.com/repomanager3/installation-and-upgrades/installation-methods
+
+https://smee.io/D4FRxJyau8sk3NyH
+smee --url https://smee.io/D4FRxJyau8sk3NyH --path /github-webhook/ --port 9335
+
+
+https://console-openshift-console.apps.democpd.corp.mastechinfotrellis.com/dashboards
+siva
+sI**P*****
+
+Admin
+trinitron
+automationpoc
+
+chn-mit-training01 - .55
+chn-mit-training02 - .56
+chn-mit-semarchyapp01 - .49
+10.100.15.41 - kunal
+
+UserName-appadmin
+Password- HTKCpoLCnyST
+VM Name- chn-mit-jenkins03
+OS Type- Linux Fedora 36 Server Edition
+Hostname - chn-mit-jenkins03

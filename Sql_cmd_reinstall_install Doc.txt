@@ -1,0 +1,122 @@
+5.3.9   
+2015
+
+sudo service mssql-server stop
+  522  sudo systemctl status mssql-server
+  523  
+  524  sudo yum remove mssql-sever
+  525  sudo systemctl status mssql-server
+  526  sudo rm -rf /var/opt/mssql
+  527  ll
+  528  cd /var/opt/
+  529  ll
+  530  cd
+  531  cd /var/opt/mssql/data
+  532  cd /var/opt/
+  533  ll
+  534  cd
+  535  sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/mssql-server-2019.repo
+  536  sudo yum install -y mssql-server
+  537  sudo /opt/mssql/bin/mssql-conf setup
+  538  systemctl status mssql-server
+  539  sudo firewall-cmd --zone=public --add-port=1433/tcp --permanent
+  540  sudo firewall-cmd --reload
+  541  sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo
+  542  sudo yum remove unixODBC-utf16 unixODBC-utf16-devel
+  543  sudo yum install -y mssql-tools unixODBC-devel
+  544  echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+  545  echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+  546  source ~/.bashrc
+
+
+Reinstall
+
+[root@chn-mit-training02 ~]# sudo systemctl status mssql-server
+● mssql-server.service - Microsoft SQL Server Database Engine
+   Loaded: loaded (/usr/lib/systemd/system/mssql-server.service; enabled; vendor preset: disabled)
+   Active: active (running) since Mon 2022-11-21 15:25:26 IST; 3 months 9 days ago
+     Docs: https://docs.microsoft.com/en-us/sql/linux
+ Main PID: 68767 (sqlservr)
+    Tasks: 160
+   Memory: 1.4G
+   CGroup: /system.slice/mssql-server.service
+           ├─68767 /opt/mssql/bin/sqlservr
+           └─68786 /opt/mssql/bin/sqlservr
+
+Mar 02 19:15:14 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:15:14 chn-mit-training02 sqlservr[68767]: [154B blob data]
+Mar 02 19:15:24 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:15:24 chn-mit-training02 sqlservr[68767]: [151B blob data]
+Mar 02 19:15:24 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:15:24 chn-mit-training02 sqlservr[68767]: [154B blob data]
+Mar 02 19:15:34 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:15:34 chn-mit-training02 sqlservr[68767]: [154B blob data]
+Mar 02 19:15:34 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:15:34 chn-mit-training02 sqlservr[68767]: [151B blob data]
+[root@chn-mit-training02 ~]# sudo service mssql-server stop
+Redirecting to /bin/systemctl stop mssql-server.service
+[root@chn-mit-training02 ~]# sudo systemctl status mssql-server
+● mssql-server.service - Microsoft SQL Server Database Engine
+   Loaded: loaded (/usr/lib/systemd/system/mssql-server.service; enabled; vendor preset: disabled)
+   Active: inactive (dead) since Thu 2023-03-02 19:17:05 IST; 7s ago
+     Docs: https://docs.microsoft.com/en-us/sql/linux
+  Process: 68767 ExecStart=/opt/mssql/bin/sqlservr (code=exited, status=0/SUCCESS)
+ Main PID: 68767 (code=exited, status=0/SUCCESS)
+
+Mar 02 19:17:04 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:17:04 chn-mit-training02 sqlservr[68767]: [151B blob data]
+Mar 02 19:17:05 chn-mit-training02 systemd[1]: Stopping Microsoft SQL Server Database Engine...
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [190B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [76B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [164B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [1B blob data]
+Mar 02 19:17:05 chn-mit-training02 systemd[1]: mssql-server.service: Succeeded.
+Mar 02 19:17:05 chn-mit-training02 systemd[1]: Stopped Microsoft SQL Server Database Engine.
+[root@chn-mit-training02 ~]# sudo systemctl status mssql-server
+● mssql-server.service - Microsoft SQL Server Database Engine
+   Loaded: loaded (/usr/lib/systemd/system/mssql-server.service; enabled; vendor preset: disabled)
+   Active: inactive (dead) since Thu 2023-03-02 19:17:05 IST; 30s ago
+     Docs: https://docs.microsoft.com/en-us/sql/linux
+  Process: 68767 ExecStart=/opt/mssql/bin/sqlservr (code=exited, status=0/SUCCESS)
+ Main PID: 68767 (code=exited, status=0/SUCCESS)
+
+Mar 02 19:17:04 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:17:04 chn-mit-training02 sqlservr[68767]: [151B blob data]
+Mar 02 19:17:05 chn-mit-training02 systemd[1]: Stopping Microsoft SQL Server Database Engine...
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [190B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [76B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [164B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [1B blob data]
+Mar 02 19:17:05 chn-mit-training02 systemd[1]: mssql-server.service: Succeeded.
+Mar 02 19:17:05 chn-mit-training02 systemd[1]: Stopped Microsoft SQL Server Database Engine.
+[root@chn-mit-training02 ~]# sudo apt-get remove mssql-sever
+sudo: apt-get: command not found
+[root@chn-mit-training02 ~]# sudo yum remove mssql-sever
+No match for argument: mssql-sever
+No packages marked for removal.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[root@chn-mit-training02 ~]# sudo systemctl status mssql-server
+● mssql-server.service - Microsoft SQL Server Database Engine
+   Loaded: loaded (/usr/lib/systemd/system/mssql-server.service; enabled; vendor preset: disabled)
+   Active: inactive (dead) since Thu 2023-03-02 19:17:05 IST; 1min 45s ago
+     Docs: https://docs.microsoft.com/en-us/sql/linux
+  Process: 68767 ExecStart=/opt/mssql/bin/sqlservr (code=exited, status=0/SUCCESS)
+ Main PID: 68767 (code=exited, status=0/SUCCESS)
+
+Mar 02 19:17:04 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:17:04 chn-mit-training02 sqlservr[68767]: [151B blob data]
+Mar 02 19:17:05 chn-mit-training02 systemd[1]: Stopping Microsoft SQL Server Database Engine...
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [190B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [73B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [76B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [164B blob data]
+Mar 02 19:17:05 chn-mit-training02 sqlservr[68767]: [1B blob data]
+Mar 02 19:17:05 chn-mit-training02 systemd[1]: mssql-server.service: Succeeded.
+Mar 02 19:17:05 chn-mit-training02 systemd[1]: Stopped Microsoft SQL Server Database Engine.
+[root@chn-mit-training02 ~]# sudo rm -rf /var/opt/mssql
+[root@chn-mit-training02 ~]#
+

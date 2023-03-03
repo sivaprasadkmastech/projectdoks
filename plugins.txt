@@ -1,0 +1,45 @@
+Installing Plugins/Upgrades
+Preparation	
+Checking internet connectivity
+Checking update center connectivity
+Success
+Deploy to container	 Success
+Loading plugin extensions	 Success
+Pipeline: Milestone Step	 Success
+Pipeline: Build Step	 Success
+Variant	 Success
+Pipeline: Groovy Libraries	 Success
+Pipeline: Model API	 Success
+Pipeline: Stage Step	 Success
+Pipeline: Declarative Extension Points API	 Success
+Pipeline: Multibranch	 Success
+Pipeline: Stage Tags Metadata	 Success
+Pipeline: Input Step	 Success
+Pipeline: Declarative	 Success
+Pipeline	 Success
+Pipeline: Build Step	 Success
+Loading plugin extensions	 Success
+Pipeline Graph Analysis	 Success
+Pipeline: REST API	 Success
+JavaScript GUI Lib: Handlebars bundle	 Success
+JavaScript GUI Lib: Moment.js bundle	 Success
+Pipeline: Stage View	 Success
+Loading plugin extensions	 Success
+SonarQube Scanner	 Success
+Loading plugin extensions	 Success
+Nexus Artifact Uploader	 Success
+Loading plugin extensions	 Success
+Nexus Platform	 Success
+WMI Windows Agents	 Success
+PAM Authentication	 Success
+LDAP	 Success
+External Monitor Job Type	 Success
+Nexus Task Runner	 Success
+Loading plugin extensions	 Success
+Pipeline Utility Steps	 Success
+Loading plugin extensions	 Success
+Email Extension	 Success
+Email Extension Template	 Success
+Loading plugin extensions	 Success
+Slack Notification	 Success
+Loading plugin extensions	 Success

@@ -1,0 +1,39 @@
+D:\Ddrivefiles_101022\jenkins\test2>git add .
+
+D:\Ddrivefiles_101022\jenkins\test2>git commit -m "first commit"
+[master (root-commit) 25fa2e3] first commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test.txt
+
+D:\Ddrivefiles_101022\jenkins\test2>git branch -M main
+
+D:\Ddrivefiles_101022\jenkins\test2>git remote add origin git@github.com:sivaprasadkmastech/test2.git
+
+D:\Ddrivefiles_101022\jenkins\test2>git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 218 bytes | 218.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:sivaprasadkmastech/test2.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+D:\Ddrivefiles_101022\jenkins\test2>git add .
+
+D:\Ddrivefiles_101022\jenkins\test2>git commit -m "first commit"
+[main dc7f09c] first commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test23.txt
+
+D:\Ddrivefiles_101022\jenkins\test2>git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 246 bytes | 246.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:sivaprasadkmastech/test2.git
+   25fa2e3..dc7f09c  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+D:\Ddrivefiles_101022\jenkins\test2>

@@ -1,0 +1,58 @@
+
+[appadmin@chn-mit-jenkins01 .ssh]$ ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
+# github.com:22 SSH-2.0-babeld-2f5f2727
+[appadmin@chn-mit-jenkins01 .ssh]$ cat known_hosts
+10.100.15.26 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBFZcY1jXd2MieTVzFqsGmlD+YU3jpxoTBf+h9C+EH1K
+10.100.15.26 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCZr+35PS7MT2UVmlMeBZLUX3y6cIfXmq8EWP9ELRZD6pOF3LR9kfhn2WJlQkwTQ9JkciILjqoSMfPyASsFPBvBxFUBoqLqAnm+qd4rbmSGDYe+x0yLHWSwlOJGEYwHQVRCw2Ycak8eju7pxEFy6RgYtTVfJqft3hOdAPvs3lSNxLfORUwi5Fd2wKMS3DYBVCMZtb7bePA3tVSuog7aDdlXqZksjPI/myHNrN8u2AqnHL0dZwPmHrvrcRQ0ZmSQ6rjFj530donJuu5QOgrMNcMCQAYxW0Qpi39dAViTaMoY6ULUvmdFS/aMVYNUdhHNINX6whHB7YecQeTFEaoqaiYdnizmQy13JTRcusntRHiUPrvU5lDMPweAxXDps2JCZCxPLXAh2Qzmiq5xbq72S10ter5Ij6jATGpKjzYc+kP5nUQoguEfUV0CYW879TMnMdxbL+729LUx/kvsIn0Q0Gzd03I9g1KBz31HX4U8rDFOYd7/sKPaZm5DF7jEuQRrgE=
+10.100.15.26 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF8wr0m1kSStOkPt1Hg0MnGFjaESUazL9hXNYPtTYK9cG5vnWQQvPgrF4uWor9O7xMHYYvckdZihcBom9AlDMHY=
+github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+[appadmin@chn-mit-jenkins01 .ssh]$ ssh-keygen -t ed25519 -C "sivaprasad.k@mastechinfotrellis.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/appadmin/.ssh/id_ed25519):
+/home/appadmin/.ssh/id_ed25519 already exists.
+Overwrite (y/n)?
+[appadmin@chn-mit-jenkins01 .ssh]$ cat known_hosts
+10.100.15.26 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBFZcY1jXd2MieTVzFqsGmlD+YU3jpxoTBf+h9C+EH1K
+10.100.15.26 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCZr+35PS7MT2UVmlMeBZLUX3y6cIfXmq8EWP9ELRZD6pOF3LR9kfhn2WJlQkwTQ9JkciILjqoSMfPyASsFPBvBxFUBoqLqAnm+qd4rbmSGDYe+x0yLHWSwlOJGEYwHQVRCw2Ycak8eju7pxEFy6RgYtTVfJqft3hOdAPvs3lSNxLfORUwi5Fd2wKMS3DYBVCMZtb7bePA3tVSuog7aDdlXqZksjPI/myHNrN8u2AqnHL0dZwPmHrvrcRQ0ZmSQ6rjFj530donJuu5QOgrMNcMCQAYxW0Qpi39dAViTaMoY6ULUvmdFS/aMVYNUdhHNINX6whHB7YecQeTFEaoqaiYdnizmQy13JTRcusntRHiUPrvU5lDMPweAxXDps2JCZCxPLXAh2Qzmiq5xbq72S10ter5Ij6jATGpKjzYc+kP5nUQoguEfUV0CYW879TMnMdxbL+729LUx/kvsIn0Q0Gzd03I9g1KBz31HX4U8rDFOYd7/sKPaZm5DF7jEuQRrgE=
+10.100.15.26 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF8wr0m1kSStOkPt1Hg0MnGFjaESUazL9hXNYPtTYK9cG5vnWQQvPgrF4uWor9O7xMHYYvckdZihcBom9AlDMHY=
+github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+[appadmin@chn-mit-jenkins01 .ssh]$ ssh-keygen -t ed25519 -C "sivaprasad.k@mastechinfotrellis.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/appadmin/.ssh/id_ed25519):
+/home/appadmin/.ssh/id_ed25519 already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/appadmin/.ssh/id_ed25519
+Your public key has been saved in /home/appadmin/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:FVniZYvhnlbz6AzUhIGLPkHzlwZeQULynjwIxomP1IM sivaprasad.k@mastechinfotrellis.com
+The key's randomart image is:
++--[ED25519 256]--+
+|      ..ooB*=    |
+|   = .ooo++X .   |
+|  E B. =.+*.=    |
+| . + oo++=+o +   |
+|  . ....So= . .  |
+|      o  o +     |
+|       .    o    |
+|                 |
+|                 |
++----[SHA256]-----+
+[appadmin@chn-mit-jenkins01 .ssh]$ cat known_hosts
+10.100.15.26 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBFZcY1jXd2MieTVzFqsGmlD+YU3jpxoTBf+h9C+EH1K
+10.100.15.26 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCZr+35PS7MT2UVmlMeBZLUX3y6cIfXmq8EWP9ELRZD6pOF3LR9kfhn2WJlQkwTQ9JkciILjqoSMfPyASsFPBvBxFUBoqLqAnm+qd4rbmSGDYe+x0yLHWSwlOJGEYwHQVRCw2Ycak8eju7pxEFy6RgYtTVfJqft3hOdAPvs3lSNxLfORUwi5Fd2wKMS3DYBVCMZtb7bePA3tVSuog7aDdlXqZksjPI/myHNrN8u2AqnHL0dZwPmHrvrcRQ0ZmSQ6rjFj530donJuu5QOgrMNcMCQAYxW0Qpi39dAViTaMoY6ULUvmdFS/aMVYNUdhHNINX6whHB7YecQeTFEaoqaiYdnizmQy13JTRcusntRHiUPrvU5lDMPweAxXDps2JCZCxPLXAh2Qzmiq5xbq72S10ter5Ij6jATGpKjzYc+kP5nUQoguEfUV0CYW879TMnMdxbL+729LUx/kvsIn0Q0Gzd03I9g1KBz31HX4U8rDFOYd7/sKPaZm5DF7jEuQRrgE=
+10.100.15.26 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF8wr0m1kSStOkPt1Hg0MnGFjaESUazL9hXNYPtTYK9cG5vnWQQvPgrF4uWor9O7xMHYYvckdZihcBom9AlDMHY=
+github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+[appadmin@chn-mit-jenkins01 .ssh]$ cat id_ed25519
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACCUbJjbSGUBh1tL+E0KLUZsYdImYtxF1f9nS8+/cEUCbgAAAKg4NModODTK
+HQAAAAtzc2gtZWQyNTUxOQAAACCUbJjbSGUBh1tL+E0KLUZsYdImYtxF1f9nS8+/cEUCbg
+AAAEB8aWIAHCWwxI4McCoYlv6iCVTy81z9gT4k4asYjecRmJRsmNtIZQGHW0v4TQotRmxh
+0iZi3EXV/2dLz79wRQJuAAAAI3NpdmFwcmFzYWQua0BtYXN0ZWNoaW5mb3RyZWxsaXMuY2
+9tAQI=
+-----END OPENSSH PRIVATE KEY-----
+[appadmin@chn-mit-jenkins01 .ssh]$ cat id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJRsmNtIZQGHW0v4TQotRmxh0iZi3EXV/2dLz79wRQJu sivaprasad.k@mastechinfotrellis.com
+[appadmin@chn-mit-jenkins01 .ssh]$

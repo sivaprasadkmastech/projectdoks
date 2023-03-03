@@ -1,0 +1,10 @@
+stage('Deploy Stage') {
+          steps {
+            sshagent(['tomcatssh']) {
+              sh "scp -v -o StrictHostKeyChecking=no /home/appadmin/builds/workspace/HelloWorldsample/sample/target/sample.war appadmin@10.100.15.67:/opt/apache-tomcat-9.0.67/webapps/"
+                } 
+              }
+            }
+
+
+  <packaging>war</packaging>

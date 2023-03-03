@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    tools {
+       maven "Maven"
+    }
+    stages {
+        stage('Git Clone Stage') {
+            steps {
+                git branch: 'main', credentialsId: 'git01hostprivateuser', url: 'git@github.com:sivaprasadkmastech/MDMprojectprivate.git'
+            }
+        }
+        stage('Build Stage') {
+            steps {
+                sh "mvn -f /home/appadmin/builds/workspace/MDMprojectprivate/test/pom.xml clean install"
+            }
+        }
+        stage('Build copy Stage to local folder') {
+            steps {
+                // sh "scp /home/appadmin/builds/workspace/Copywar/simple/target/simple.war /home/appadmin/oldbuilds/Copywar/" //
+                // sh 'scp /home/appadmin/builds/workspace/Copywar/simple/target/simple.war /home/appadmin/oldbuilds/Copywar/simple_"$(date +%d-%m-%Y_%H:%M:%S)".war' //
+                sh 'scp /home/appadmin/builds/workspace/MDMprojectprivate/test/target/test.war /home/appadmin/oldbuilds/MDMprojectprivate/test_1."${BUILD_NUMBER}".0.war'
+            }
+        }
+        stage('SonarScanner Stage') {
+            steps {
+                withSonarQubeEnv('Sonar') {
+                sh "mvn -f /home/appadmin/builds/workspace/MDMprojectprivate/test/pom.xml org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar"
+               }
+            }
+        }
+        stage("publish to nexus") {
+            steps {
+                echo 'artifact upload started'
+				nexusArtifactUploader artifacts: [[artifactId: 'test', classifier: '', file: '/home/appadmin/builds/workspace/MDMprojectprivate/test/target/test.war', type: 'war']], credentialsId: 'Nexusappcred', groupId: 'com.mit.projects', nexusUrl: 'chn-mit-jenkins03.corp.mastechinfotrellis.com:8081/repository/MDMProject/', nexusVersion: 'nexus3', protocol: 'http', repository: 'MDMProject', version: '1.${BUILD_NUMBER}.0'
+                echo 'artifact uploaded'
+			}
+		}
+		stage('Deploy Stage') {
+          steps {
+            sshagent(['tomcatssh']) {
+              sh "scp -v -o StrictHostKeyChecking=no /home/appadmin/builds/workspace/MDMprojectprivate/test/target/test.war appadmin@10.100.15.67:/opt/apache-tomcat-9.0.67/webapps/"
+                } 
+              }
+            }
+    }
+}
